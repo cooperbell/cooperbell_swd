@@ -1,0 +1,41 @@
+*.[oa]
+# Compiled Static libraries
+*.a
+*.config
+*.dylib
+*.la
+*.lai
+*.lo
+*.nhdr
+*.nii.gz
+*.nrrd
+# Compiled Object files
+*.o
+*.obj
+*.orig
+*.pyc
+*.raw
+*.sample
+*.slo
+# Compiled Dynamic libraries
+*.so
+*.swp
+*ExternalSources*
+# emacs backups
+*~
+.DS_Store
+.ExternalData_MD5*
+.RData
+.RDataTmp
+.Rhistory
+._*
+.clang_complete
+.emacs.desktop
+.svn
+CMakeCache.txt
+CMakeFiles/*
+crash*
+## IntelliJ files that are not sharable.
+workspace.xml
+## IntelliJ output file path
+out/
