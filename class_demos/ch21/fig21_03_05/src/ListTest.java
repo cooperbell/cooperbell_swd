@@ -1,8 +1,8 @@
 // Fig. 21.5: ListTest.java
 // ListTest class to demonstrate List capabilities.
 
-import com.deitel.datastructures.EmptyListException;
-import com.deitel.datastructures.List;
+import com.deitel.datastructurs.EmptyListException;
+import com.deitel.datastructurs.List;
 
 public class ListTest {
     public static void main(String[] args) {

@@ -37,13 +37,17 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
     // calculate earnings
     @Override
     public double earnings() {
+        /* UNCOMMENT TO SEE ERROR
         // not allowed: commissionRate and grossSales private in superclass
         return baseSalary + (commissionRate * grossSales);
+        */
+        return 0;
     }
 
     // return String representation of BasePlusCommissionEmployee
     @Override
     public String toString() {
+        /* UNCOMMMENT TO SEE ERROR
         // not allowed: attempts to access private superclass members
         return String.format(
                 "%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f%n%s: %.2f",
@@ -51,6 +55,8 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
                 "social security number", socialSecurityNumber,
                 "gross sales", grossSales, "commission rate", commissionRate,
                 "base salary", baseSalary);
+                */
+        return "";
     }
 } // end class BasePlusCommissionEmployee
 

@@ -51,7 +51,8 @@ public class RawTypeTest {
             emptyStackException.printStackTrace();
 
         }
-    } // end class RawTypeTest
+    }
+} // end class RawTypeTest
 
 /**************************************************************************
  * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *

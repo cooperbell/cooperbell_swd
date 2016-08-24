@@ -18,7 +18,7 @@ class TimeData {
     }
 } // end class TimeData
 
-public class FibonacciDemo
+public class FibonacciDemo {
 
         public static void main(String[] args)
                 throws InterruptedException, ExecutionException {
