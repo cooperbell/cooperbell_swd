@@ -1,4 +1,4 @@
-Software Design ECE:3330 Fall 2016
+Software Design ECE:3330 Fall 2017
 =======================
 
 This page contains only partial supplementary information related to git.
@@ -15,8 +15,8 @@ Helpful URLS directly relevant to SWD class
 - [ ] WIKI Markdown      https://gitlab.com/gitlab-org/gitlab-ce/blob/6-4-stable/doc/markdown/markdown.md
 - [ ] Java Documentation https://docs.oracle.com/javase/search.html
 - [ ] Course Policies    https://uiowa.instructure.com/courses/6716/pages/course-policies
-- [ ] Example Portfolio  https://class-git.engineering.uiowa.edu/swd2016/swd2016/wikis/home
-- [ ] Example Files      https://class-git.engineering.uiowa.edu/swd2016/swd2016/tree/master/Chapter\_code\_examples
+- [ ] Example Portfolio  https://class-git.engineering.uiowa.edu/swd2017/swd2017/wikis/home
+- [ ] Example Files      https://class-git.engineering.uiowa.edu/swd2017/swd2017/tree/master/Chapter\_code\_examples
 
 Fun :smile: links for in-depth understanding :thumbsup:
 --------
