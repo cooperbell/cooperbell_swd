@@ -36,6 +36,8 @@ CMakeCache.txt
 CMakeFiles/*
 crash*
 ## IntelliJ files that are not sharable.
+##  https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
 workspace.xml
+tasks.xml
 ## IntelliJ output file path
 out/
