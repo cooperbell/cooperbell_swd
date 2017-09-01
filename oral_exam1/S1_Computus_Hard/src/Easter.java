@@ -1,6 +1,11 @@
 public class Easter {
 
-    public Easter(int year) {
+    private int month;
+    private int day;
+    private int year;
+
+    public Easter(int Year) {
+        year = Year;
         int a = year % 19;
         int b = Math.floorDiv(year, 100);
         int c = year % 100;
@@ -13,15 +18,23 @@ public class Easter {
         int k = c % 4;
         int l = (32 + 2 * e + 2 * i - h - k) % 7;
         int m = Math.floorDiv((a + 11 * h + 22 * l), 451);
-        int month = Math.floorDiv((h + l + 7 * m + 114), 31);
-        int day = ((h + l - 7 * m + 114) % 31) + 1;
+        month = Math.floorDiv((h + l + 7 * m + 114), 31);
+        day = ((h + l - 7 * m + 114) % 31) + 1;
+    }
 
-
+    public void printDate(){
         if (month == 4)
             System.out.println("April " + day + ", " + year);
 
-        if (month == 3)
+        else if (month == 3)
             System.out.println("March " + day + ", " + year);
+    }
 
+    public int getMonth(){
+        return month;
+    }
+
+    public int getDay(){
+        return day;
     }
 }

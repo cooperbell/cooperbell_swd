@@ -9,5 +9,6 @@ public class S1_Computus_Easy {
         int n = reader.nextInt();
 
         Easter e = new Easter(n);
+        e.printDate();
     }
 }
