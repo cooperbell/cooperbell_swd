@@ -22,7 +22,7 @@ public class Easter {
         day = ((h + l - 7 * m + 114) % 31) + 1;
     }
 
-    public String getDate(){
+    public String getDate() {
         if (month == 4)
             return "April " + day + ", " + year;
 
@@ -32,11 +32,11 @@ public class Easter {
             return "No date";
     }
 
-    public int getMonth(){
+    public int getMonth() {
         return month;
     }
 
-    public int getDay(){
+    public int getDay() {
         return day;
     }
 }

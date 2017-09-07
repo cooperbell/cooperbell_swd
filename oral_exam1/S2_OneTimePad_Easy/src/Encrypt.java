@@ -1,12 +1,14 @@
 import java.util.Scanner;
+import java.util.Random;
 
-public class S2_OneTimePad_Decrypt {
+public class Encrypt {
+
     private final static char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
     /**
      *
-     * @param c
-     * @return index of c in alphabet array
+     * @param c char in input message
+     * @return index of char c in alphabet array
      */
     private static int findIndex(char c) {
         int index;
@@ -24,7 +26,7 @@ public class S2_OneTimePad_Decrypt {
      *
      * @param c current char in input message
      * @param n number of times to shift ahead in alphabet array
-     * @return character that is n indices before c
+     * @return character that is n indices ahead of c
      */
     private static char convertChar(char c, int n) {
 
@@ -32,10 +34,10 @@ public class S2_OneTimePad_Decrypt {
         if (index == -1)
             return c;
 
-        int newChar = index - n;
-        if (newChar < 0) {
-            int buffer = n - index;
-            c = alphabet[alphabet.length - buffer];
+        int newChar = index + n;
+        if (newChar > alphabet.length) {
+            int buffer = newChar - alphabet.length;
+            c = alphabet[buffer];
             return c;
         }
         c = alphabet[newChar];
@@ -48,18 +50,21 @@ public class S2_OneTimePad_Decrypt {
 
         Scanner scan = new Scanner(System.in);
         String temp = scan.nextLine();
-        System.out.println("Enter a number: ");
-        int n = scan.nextInt();
         String message = temp.toUpperCase();
         char[] newMessage = new char[message.length()];
+        Random rand = new Random();
 
         for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
-            c = convertChar(c, n);
+            int  n = rand.nextInt(20);
+
+            if (c != ' ')
+                c = convertChar(c, n);
+
             newMessage[i] = c;
         }
 
-        for (int i = 0; i < newMessage.length; i++) {
+        for (int i = 0; i < newMessage.length; i++){
             System.out.print(newMessage[i]);
         }
     }
