@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class S2_OneTimePad_Encrypt {
 
@@ -49,13 +50,13 @@ public class S2_OneTimePad_Encrypt {
 
         Scanner scan = new Scanner(System.in);
         String temp = scan.nextLine();
-        System.out.println("Enter a number: ");
-        int n = scan.nextInt();
         String message = temp.toUpperCase();
         char[] newMessage = new char[message.length()];
+        Random rand = new Random();
 
         for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
+            int  n = rand.nextInt(25) + 1;
 
             if (c != ' ')
                 c = convertChar(c, n);

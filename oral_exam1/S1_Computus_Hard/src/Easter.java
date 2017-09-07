@@ -22,12 +22,14 @@ public class Easter {
         day = ((h + l - 7 * m + 114) % 31) + 1;
     }
 
-    public void printDate(){
+    public String getDate(){
         if (month == 4)
-            System.out.println("April " + day + ", " + year);
+            return "April " + day + ", " + year;
 
         else if (month == 3)
-            System.out.println("March " + day + ", " + year);
+            return "March " + day + ", " + year;
+        else
+            return "No date";
     }
 
     public int getMonth(){
