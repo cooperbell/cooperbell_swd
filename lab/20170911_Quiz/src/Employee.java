@@ -8,12 +8,11 @@ public class Employee {
     private Date hireDate;
 
     // constructor to initialize name, birth date and hire date
-    public Employee(String firstName, String lastName, Date birthDate,
-                    Date hireDate) {
+    public Employee(String firstName, String lastName,int bm, int bd, int by, int hm, int hd, int hy) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.hireDate = hireDate;
+        this.birthDate = new Date(bm, bd, by);
+        this.hireDate = new Date(hm, hd, hy);
     }
 
     // convert Employee to String format

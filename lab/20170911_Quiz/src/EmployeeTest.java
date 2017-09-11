@@ -3,10 +3,7 @@
 
 public class EmployeeTest {
     public static void main(String[] args) {
-        final Date birth = new Date(7, 24, 1949);
-        final Date hire = new Date(3, 12, 1988);
-        Employee employee = new Employee("Bob", "Blue", birth, hire);
-
+        Employee employee = new Employee("Bob", "Blue", 7, 24, 1949, 3, 12, 1988);
 
         System.out.println(employee);
     }
