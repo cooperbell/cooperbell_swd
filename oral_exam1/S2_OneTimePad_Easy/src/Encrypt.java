@@ -1,16 +1,18 @@
+import java.io.*;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Encrypt {
 
-    private final static char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    public final static char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
     /**
+     * Takes a letter of the alphabet as a char, and finds its corresponding index in the alphabet array.
      *
      * @param c char in input message
      * @return index of char c in alphabet array
      */
-    private static int findIndex(char c) {
+    public static int findIndex(char c) {
         int index;
 
         for (int i = 0; i < alphabet.length; i++) {
@@ -23,12 +25,15 @@ public class Encrypt {
     }
 
     /**
+     * Takes the given character c and moves it n indexes through the alphabet char array. If the number of shifts is
+     * greater than the remainder of the array, then we imitate cycling through the rest of the array and then going
+     * back to the beginning.
      *
      * @param c current char in input message
      * @param n number of times to shift ahead in alphabet array
      * @return character that is n indices ahead of c
      */
-    private static char convertChar(char c, int n) {
+    private char convertChar(char c, int n) {
 
         int index = findIndex(c);
         if (index == -1)
@@ -45,21 +50,52 @@ public class Encrypt {
     }
 
 
-    public static void main(String[] args) {
-        System.out.println("Enter a message: ");
-
+    public static void main(String[] args) throws IOException {
+        KeyGenerator key = new KeyGenerator();
+        Encrypt encrypt = new Encrypt();
         Scanner scan = new Scanner(System.in);
-        String temp = scan.nextLine();
-        String message = temp.toUpperCase();
-        char[] newMessage = new char[message.length()];
-        Random rand = new Random();
+        String keyFileLocation, message;
+        int n;
+        int[] keyArray;
+        char[] newMessage;
 
-        for (int i = 0; i < message.length(); i++) {
+        System.out.println("Enter a message: ");
+        message = scan.nextLine();
+        message = message.toUpperCase();
+
+        System.out.println("Give a location for the key file: ");
+        keyFileLocation = scan.nextLine();
+
+        System.out.println("Specify number of keys: ");
+        n = scan.nextInt();
+
+        keyArray = new int[message.length()];
+        newMessage = new char[message.length()];
+        key.generateKeyFile(n, keyFileLocation);
+
+        //open key file, find the value specified value of the starting point
+        Scanner reader = new Scanner(new File(keyFileLocation));
+        Random rand = new Random();
+        int startPoint = reader.nextInt();
+
+        for (int i = 0; i < startPoint; i++) //iterate to correct starting index
+            reader.nextInt();
+
+        for (int i = 0; i < keyArray.length; i++) { //fill array of n values
+            if (!reader.hasNextInt()) { //if we hit the end of the file but still have indexes to fill we go back to the beginning
+                reader.close();
+                reader = new Scanner(new File(keyFileLocation));
+                reader.nextInt(); //iterate once to skip the startPoint key
+            }
+            keyArray[i] = reader.nextInt();
+            System.out.println("Key array index " + i + ": " + keyArray[i]);
+        }
+
+        for (int i = 0; i < keyArray.length; i++) {
             char c = message.charAt(i);
-            int  n = rand.nextInt(20);
 
             if (c != ' ')
-                c = convertChar(c, n);
+                c = encrypt.convertChar(c, keyArray[i]);
 
             newMessage[i] = c;
         }
@@ -67,5 +103,6 @@ public class Encrypt {
         for (int i = 0; i < newMessage.length; i++){
             System.out.print(newMessage[i]);
         }
+        //TODO: write newMessage to file
     }
 }

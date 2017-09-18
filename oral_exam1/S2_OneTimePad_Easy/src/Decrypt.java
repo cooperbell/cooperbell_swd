@@ -1,24 +1,24 @@
 import java.util.Scanner;
 
 public class Decrypt {
-    private final static char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    //private final static char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
     /**
      *
      * @param c
      * @return index of c in alphabet array
      */
-    private static int findIndex(char c) {
-        int index;
-
-        for (int i = 0; i < alphabet.length; i++) {
-            if (c == alphabet[i]) {
-                index = i;
-                return index;
-            }
-        }
-        return -1;
-    }
+//    private int findIndex(char c) {
+//        int index;
+//
+//        for (int i = 0; i < Encrypt.alphabet.length; i++) {
+//            if (c == Encrypt.alphabet[i]) {
+//                index = i;
+//                return index;
+//            }
+//        }
+//        return -1;
+//    }
 
     /**
      *
@@ -26,40 +26,37 @@ public class Decrypt {
      * @param n number of times to shift ahead in alphabet array
      * @return character that is n indices before c
      */
-    private static char convertChar(char c, int n) {
+    private char convertChar(char c, int n) {
 
-        int index = findIndex(c);
+        int index = Encrypt.findIndex(c);
         if (index == -1)
             return c;
 
         int newChar = index - n;
         if (newChar < 0) {
             int buffer = n - index;
-            c = alphabet[alphabet.length - buffer];
+            c = Encrypt.alphabet[Encrypt.alphabet.length - buffer];
             return c;
         }
-        c = alphabet[newChar];
+        c = Encrypt.alphabet[newChar];
         return c;
     }
 
-//    public void key(int n){
-//        Encrypt s;
-//        int[] key = new int[s.]
-//    }
 
     public static void main(String[] args) {
-        System.out.println("Enter a message: ");
+        Decrypt decrypt = new Decrypt();
+        System.out.println("Specify location for key file: ");
 
         Scanner scan = new Scanner(System.in);
         String temp = scan.nextLine();
-        System.out.println("Enter a number: ");
+        System.out.println("Enter a message: ");
         int n = scan.nextInt();
         String message = temp.toUpperCase();
         char[] newMessage = new char[message.length()];
 
         for (int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
-            c = convertChar(c, n);
+            c = decrypt.convertChar(c, n);
             newMessage[i] = c;
         }
 

@@ -34,7 +34,7 @@ public class S1_Computus_Hard {
         for(int i = 1997; i < 2017; i++){
             Easter e = new Easter(i);
             String date = e.getDate();
-            assertEquals(dates.get(i), date);
+            assertEquals(dates.get(i), date + ", " + i);
         }
     }
 }

@@ -24,10 +24,10 @@ public class Easter {
 
     public String getDate() {
         if (month == 4)
-            return "April " + day + ", " + year;
+            return "April " + day /*+ ", " + year*/;
 
         else if (month == 3)
-            return "March " + day + ", " + year;
+            return "March " + day /*+ ", " + year*/;
         else
             return "No date";
     }
