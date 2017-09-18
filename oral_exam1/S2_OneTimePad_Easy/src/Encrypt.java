@@ -54,7 +54,7 @@ public class Encrypt {
         KeyGenerator key = new KeyGenerator();
         Encrypt encrypt = new Encrypt();
         Scanner scan = new Scanner(System.in);
-        String keyFileLocation, message;
+        String keyFileLocation, messageFileLocation, message;
         int n;
         int[] keyArray;
         char[] newMessage;
@@ -62,6 +62,8 @@ public class Encrypt {
         System.out.println("Enter a message: ");
         message = scan.nextLine();
         message = message.toUpperCase();
+        keyArray = new int[message.length()];
+        newMessage = new char[message.length()];
 
         System.out.println("Give a location for the key file: ");
         keyFileLocation = scan.nextLine();
@@ -69,8 +71,6 @@ public class Encrypt {
         System.out.println("Specify number of keys: ");
         n = scan.nextInt();
 
-        keyArray = new int[message.length()];
-        newMessage = new char[message.length()];
         key.generateKeyFile(n, keyFileLocation);
 
         //open key file, find the value specified value of the starting point
@@ -100,9 +100,19 @@ public class Encrypt {
             newMessage[i] = c;
         }
 
-        for (int i = 0; i < newMessage.length; i++){
+        for (int i = 0; i < newMessage.length; i++) {
             System.out.print(newMessage[i]);
         }
-        //TODO: write newMessage to file
+        messageFileLocation = "C:\\Users\\Cooper\\IdeaProjects\\coopbell_swd\\oral_exam1\\S2_OneTimePad_Easy\\src\\encrypted_message.txt";
+        try {
+            PrintWriter writer = new PrintWriter(messageFileLocation);
+            System.out.println("Message being put into file location:" + messageFileLocation);
+            for (int i = 0; i < newMessage.length; i++) {
+                writer.print(newMessage[i]);
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Unable to create file in specified location");
+        }
     }
 }

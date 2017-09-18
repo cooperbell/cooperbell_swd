@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Decrypt {
@@ -21,7 +23,6 @@ public class Decrypt {
 //    }
 
     /**
-     *
      * @param c current char in input message
      * @param n number of times to shift ahead in alphabet array
      * @return character that is n indices before c
@@ -43,25 +44,48 @@ public class Decrypt {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Decrypt decrypt = new Decrypt();
-        System.out.println("Specify location for key file: ");
-
         Scanner scan = new Scanner(System.in);
-        String temp = scan.nextLine();
-        System.out.println("Enter a message: ");
-        int n = scan.nextInt();
-        String message = temp.toUpperCase();
-        char[] newMessage = new char[message.length()];
+        int StartingPoint;
 
-        for (int i = 0; i < message.length(); i++) {
-            char c = message.charAt(i);
-            c = decrypt.convertChar(c, n);
-            newMessage[i] = c;
+
+        System.out.println("Specify location for key file: ");
+        String keyFileLocation = scan.nextLine();
+
+        System.out.println("Specify location for message file");
+        String messageFileLocation = scan.nextLine();
+
+        Scanner keyReader = new Scanner(new File(keyFileLocation));
+        Scanner decryptor = new Scanner(new File(messageFileLocation));
+
+        StartingPoint = keyReader.nextInt();
+        for (int i = 0; i < StartingPoint; i++) //iterate to correct starting index
+            keyReader.nextInt();
+
+        String encryptedMessage = decryptor.next(); //take in message as string
+        char[] c = new char[encryptedMessage.length()];
+        for(int i = 0; i < encryptedMessage.length(); i++){ //put string elements in char array
+            c[i] = encryptedMessage.charAt(i);
         }
 
-        for (int i = 0; i < newMessage.length; i++) {
-            System.out.print(newMessage[i]);
+
+
+        for (int i = 0; i < c.length; i++) {
+            char d = c[i];
+            if(!keyReader.hasNextInt()){
+                keyReader.close();
+                keyReader = new Scanner(new File(keyFileLocation));
+                keyReader.nextInt(); //iterate once to skip the startPoint key
+            }
+            int n = keyReader.nextInt();
+            d = decrypt.convertChar(d, n);
+//            newMessage[i] = c;
+            System.out.print(d);
         }
+
+//        for (int i = 0; i < newMessage.length; i++) {
+//            System.out.print(newMessage[i]);
+//        }
     }
 }
