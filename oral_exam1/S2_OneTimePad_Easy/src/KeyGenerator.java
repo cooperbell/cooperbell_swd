@@ -16,13 +16,11 @@ public class KeyGenerator {
         try {
             PrintWriter writer = new PrintWriter(fileLocation);
             int r = rand.nextInt(n);
-//            System.out.println("Starting point: " + r);
             writer.println(r); //this is the starting position int
 
             for (int i = 0; i < n; i++) {
-                r = rand.nextInt(20);
+                r = rand.nextInt(n);
                 writer.println(r);
-//                System.out.println(r);
             }
             writer.close();
         } catch (IOException e) {

@@ -3,28 +3,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Decrypt {
-    //private final static char[] alphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
     /**
+     * This convertChar shifts the given char back n indexes to the unencrypted char
      *
-     * @param c
-     * @return index of c in alphabet array
-     */
-//    private int findIndex(char c) {
-//        int index;
-//
-//        for (int i = 0; i < Encrypt.alphabet.length; i++) {
-//            if (c == Encrypt.alphabet[i]) {
-//                index = i;
-//                return index;
-//            }
-//        }
-//        return -1;
-//    }
-
-    /**
      * @param c current char in input message
-     * @param n number of times to shift ahead in alphabet array
+     * @param n number of times to shift back in alphabet array
      * @return character that is n indices before c
      */
     private char convertChar(char c, int n) {
@@ -35,20 +19,17 @@ public class Decrypt {
 
         int newChar = index - n;
         if (newChar < 0) {
-            int buffer = n - index;
-            c = Encrypt.alphabet[Encrypt.alphabet.length - buffer];
-            return c;
+            int buffer = Math.abs(index - n);
+            newChar = buffer % Encrypt.alphabet.length;
         }
-        c = Encrypt.alphabet[newChar];
-        return c;
+            c = Encrypt.alphabet[newChar];
+            return c;
     }
-
 
     public static void main(String[] args) throws FileNotFoundException {
         Decrypt decrypt = new Decrypt();
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in), keyReader, decryptor;
         int StartingPoint;
-
 
         System.out.println("Specify location for key file: ");
         String keyFileLocation = scan.nextLine();
@@ -56,9 +37,10 @@ public class Decrypt {
         System.out.println("Specify location for message file");
         String messageFileLocation = scan.nextLine();
 
-        Scanner keyReader = new Scanner(new File(keyFileLocation));
-        Scanner decryptor = new Scanner(new File(messageFileLocation));
+        keyReader = new Scanner(new File(keyFileLocation));
+        decryptor = new Scanner(new File(messageFileLocation));
 
+        //TODO: Could this be put into functions?
         StartingPoint = keyReader.nextInt();
         for (int i = 0; i < StartingPoint; i++) //iterate to correct starting index
             keyReader.nextInt();
@@ -83,9 +65,5 @@ public class Decrypt {
 //            newMessage[i] = c;
             System.out.print(d);
         }
-
-//        for (int i = 0; i < newMessage.length; i++) {
-//            System.out.print(newMessage[i]);
-//        }
     }
 }

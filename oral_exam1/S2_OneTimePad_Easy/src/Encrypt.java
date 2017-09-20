@@ -40,13 +40,38 @@ public class Encrypt {
             return c;
 
         int newChar = index + n;
-        if (newChar > alphabet.length) {
-            int buffer = newChar - alphabet.length;
-            c = alphabet[buffer];
-            return c;
-        }
+        if (newChar > alphabet.length)
+            newChar = newChar % alphabet.length;
         c = alphabet[newChar];
         return c;
+    }
+
+    /**
+     * Opens the file with the keys, and puts the corresponding keys into the key array
+     *
+     * @param keyArray
+     * @param keyFileLocation
+     * @return
+     * @throws FileNotFoundException
+     */
+    private int[] fillKeyArray(int[] keyArray, String keyFileLocation) throws FileNotFoundException {
+        Scanner reader = new Scanner(new File(keyFileLocation));
+        int startPoint = reader.nextInt();
+
+        for (int i = 0; i < startPoint; i++) //iterate to correct starting index
+            reader.nextInt();
+
+        for (int i = 0; i < keyArray.length; i++) {
+            if (!reader.hasNextInt()) { //if we hit the end of the file but still have indexes to fill we go back to the beginning
+                reader.close();
+                reader = new Scanner(new File(keyFileLocation));
+                reader.nextInt(); //iterate once to skip the startPoint key
+            }
+            keyArray[i] = reader.nextInt();
+            System.out.println("Key array index " + i + ": " + keyArray[i]);
+        }
+
+        return keyArray;
     }
 
 
@@ -54,7 +79,8 @@ public class Encrypt {
         KeyGenerator key = new KeyGenerator();
         Encrypt encrypt = new Encrypt();
         Scanner scan = new Scanner(System.in);
-        String keyFileLocation, messageFileLocation, message;
+        String keyFileLocation, message;
+        String messageFileLocation = "C:\\Users\\Cooper\\IdeaProjects\\coopbell_swd\\oral_exam1\\S2_OneTimePad_Easy\\src\\encrypted_message.txt";
         int n;
         int[] keyArray;
         char[] newMessage;
@@ -73,40 +99,21 @@ public class Encrypt {
 
         key.generateKeyFile(n, keyFileLocation);
 
-        //open key file, find the value specified value of the starting point
-        Scanner reader = new Scanner(new File(keyFileLocation));
-        Random rand = new Random();
-        int startPoint = reader.nextInt();
-
-        for (int i = 0; i < startPoint; i++) //iterate to correct starting index
-            reader.nextInt();
-
-        for (int i = 0; i < keyArray.length; i++) { //fill array of n values
-            if (!reader.hasNextInt()) { //if we hit the end of the file but still have indexes to fill we go back to the beginning
-                reader.close();
-                reader = new Scanner(new File(keyFileLocation));
-                reader.nextInt(); //iterate once to skip the startPoint key
-            }
-            keyArray[i] = reader.nextInt();
-            System.out.println("Key array index " + i + ": " + keyArray[i]);
-        }
+        keyArray = encrypt.fillKeyArray(keyArray, keyFileLocation);
 
         for (int i = 0; i < keyArray.length; i++) {
             char c = message.charAt(i);
-
             if (c != ' ')
                 c = encrypt.convertChar(c, keyArray[i]);
-
             newMessage[i] = c;
         }
 
         for (int i = 0; i < newMessage.length; i++) {
             System.out.print(newMessage[i]);
         }
-        messageFileLocation = "C:\\Users\\Cooper\\IdeaProjects\\coopbell_swd\\oral_exam1\\S2_OneTimePad_Easy\\src\\encrypted_message.txt";
         try {
             PrintWriter writer = new PrintWriter(messageFileLocation);
-            System.out.println("Message being put into file location:" + messageFileLocation);
+            System.out.println("\nMessage being put into file location: " + messageFileLocation);
             for (int i = 0; i < newMessage.length; i++) {
                 writer.print(newMessage[i]);
             }

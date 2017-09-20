@@ -47,7 +47,7 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
     // return String representation of BasePlusCommissionEmployee
     @Override
     public String toString() {
-        /* UNCOMMMENT TO SEE ERROR
+        /* UNCOMMENT TO SEE ERROR
         // not allowed: attempts to access private superclass members
         return String.format(
                 "%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f%n%s: %.2f",
