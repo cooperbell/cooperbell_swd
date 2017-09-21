@@ -10,6 +10,7 @@ public class Rect extends TwoDimShape {
     public double getPerimeter(){
         return perimeter;
     }
+
     public void setPerimeter(double length, double width) {
         this.perimeter = (2*length) + (2*width);
     }
