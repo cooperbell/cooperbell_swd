@@ -3,23 +3,34 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Houses all the GUI components and runs everything GUI-related
+ */
 public class TextField extends JFrame {
-    private JTextField romanTextField, arabicTextField;
-    private JLabel romanLabel, arabicLabel;
+    /**
+     * Text field where the roman numerals go
+     */
+    private JTextField romanTextField;
 
     /**
-     *
+     * Text field where arabic numbers go
+     */
+    private JTextField arabicTextField;
+
+    /**
+     * Constructor
+     * Sets up the JTextfields
      */
     public TextField() {
         super("Arabic to Roman GUI");
         setLayout(new FlowLayout());
 
-        romanLabel = new JLabel("Roman: ", JLabel.LEFT);
+        JLabel romanLabel = new JLabel("Roman: ", JLabel.LEFT);
         romanTextField = new JTextField(10);
         add(romanLabel);
         add(romanTextField);
 
-        arabicLabel = new JLabel("Arabic: ", JLabel.CENTER);
+        JLabel arabicLabel = new JLabel("Arabic: ", JLabel.CENTER);
         arabicTextField = new JTextField(10);
         add(arabicLabel);
         add(arabicTextField);
@@ -32,13 +43,11 @@ public class TextField extends JFrame {
     }
 
     /**
-     *
+     * Key listener class for the roman text field. Only using the keyReleased() method.
      */
     private class RomanKeyListener implements KeyListener {
         /**
          * Invoked when a key has been typed.
-         * See the class description for {@link KeyEvent} for a definition of
-         * a key typed event.
          */
         public void keyTyped(KeyEvent e) {
 
@@ -46,8 +55,6 @@ public class TextField extends JFrame {
 
         /**
          * Invoked when a key has been pressed.
-         * See the class description for {@link KeyEvent} for a definition of
-         * a key pressed event.
          */
         public void keyPressed(KeyEvent e) {
 
@@ -55,8 +62,6 @@ public class TextField extends JFrame {
 
         /**
          * Invoked when a key has been released.
-         * See the class description for {@link KeyEvent} for a definition of
-         * a key released event.
          */
         public void keyReleased(KeyEvent e) {
             String RomanNum = romanTextField.getText();
@@ -72,13 +77,11 @@ public class TextField extends JFrame {
     }
 
     /**
-     *
+     * Key listener class for the arabic text field. Only using the keyReleased() method.
      */
     private class ArabicKeyListener implements KeyListener {
         /**
          * Invoked when a key has been typed.
-         * See the class description for {@link KeyEvent} for a definition of
-         * a key typed event.
          */
         public void keyTyped(KeyEvent e) {
 
@@ -86,8 +89,6 @@ public class TextField extends JFrame {
 
         /**
          * Invoked when a key has been pressed.
-         * See the class description for {@link KeyEvent} for a definition of
-         * a key pressed event.
          */
         public void keyPressed(KeyEvent e) {
 
@@ -95,8 +96,6 @@ public class TextField extends JFrame {
 
         /**
          * Invoked when a key has been released.
-         * See the class description for {@link KeyEvent} for a definition of
-         * a key released event.
          */
         public void keyReleased(KeyEvent e) {
             String romanNum;

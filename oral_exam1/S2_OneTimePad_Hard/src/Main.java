@@ -1,11 +1,15 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ *  Driver class for main. Prompts user for message to encrypt, number of keys, and path of key file to be put.
+ *  Encrypts message into a new file that is given to user.
+ */
 public class Main {
     /**
      * This class acts as the driver program for encrypting and decrypting the message
      *
-     * @param args
+     * @param args arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
         String keyFileLocation, message;

@@ -1,9 +1,27 @@
+/**
+ * Class Easter calculates the month and day on which Easter will fall in a given year
+ */
 public class Easter {
 
+    /**
+     *  Represents the month
+     */
     private int month;
+
+    /**
+     * Represents the day
+     */
     private int day;
+
+    /**
+     * Represents the year
+     */
     private int year;
 
+    /**
+     * Constructor houses all the logic to compute the month and day for Easter for a given yera
+     * @param Year
+     */
     public Easter(int Year) {
         year = Year;
         int a = year % 19;
@@ -22,6 +40,10 @@ public class Easter {
         day = ((h + l - 7 * m + 114) % 31) + 1;
     }
 
+    /**
+     *
+     * @return the string representation of the date
+     */
     public String getDate() {
         if (month == 4)
             return "April " + day /*+ ", " + year*/;
@@ -32,10 +54,18 @@ public class Easter {
             return "No date";
     }
 
+    /**
+     *
+     * @return the month instance variable
+     */
     public int getMonth() {
         return month;
     }
 
+    /**
+     *
+     * @return the day instance variable
+     */
     public int getDay() {
         return day;
     }

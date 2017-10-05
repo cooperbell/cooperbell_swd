@@ -1,8 +1,17 @@
 import java.util.Hashtable;
 
+/**
+ *  Class for converting Arabic numbers to it's corresponding roman numeral using a hash table lookup.
+ */
 public class ArabicToRoman {
+    /**
+     * Hash table for storing the Arabic number to Roman Numeral equivalents
+     */
     private Hashtable<Integer, String> dictionary = new Hashtable<>();
 
+    /**
+     *  Constructor initializes hash table
+     */
     ArabicToRoman() {
         dictionary.put(1, "I");
         dictionary.put(4, "IV");
@@ -24,8 +33,8 @@ public class ArabicToRoman {
      * Parses int and gets number of each letter needed
      * Builds Roman numeral string from that
      *
-     * @param num
-     * @return
+     * @param num Arabic number to turn into Roman numeral
+     * @return A String containing the Roman numeral
      */
     public String convertArabicToRoman(int num) {
         String romanNumeral = "";

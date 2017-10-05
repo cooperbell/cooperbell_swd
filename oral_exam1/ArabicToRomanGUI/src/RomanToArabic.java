@@ -1,10 +1,16 @@
 import java.util.Hashtable;
 
+/**
+ *  Class for converting Roman numerals to Arabic numbers
+ */
 public class RomanToArabic {
+    /**
+     * Hash table for storing the Roman numeral to Arabic number equivalents
+     */
     private Hashtable<String, Integer> dictionary = new Hashtable<>();
 
     /**
-     *
+     * Constructor initializes hash table
      */
     RomanToArabic() {
         dictionary.put("I", 1);
@@ -25,8 +31,8 @@ public class RomanToArabic {
     /**
      * Converts a string of Roman Numerals to its corresponding Arabic value
      *
-     * @param str
-     * @return
+     * @param str String containing Roman numeral
+     * @return a String containing the corresponding Arabic number
      */
     public String convertRomanToArabic(String str) {
         int arabicNum = 0;
@@ -47,6 +53,13 @@ public class RomanToArabic {
         return arabicNum + "";
     }
 
+    /**
+     * Takes in a char that has been just typed by the user, checks if it's a "valid" Roman numeral by checking if it's
+     * in the hash table
+     *
+     * @param c character to check
+     * @return boolean whether that char is in the hash table or not
+     */
     public boolean checkRomanChar(char c) {
         String str = Character.toString(c);
         str = str.toUpperCase();

@@ -2,11 +2,20 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import java.util.Hashtable;
 
+/**
+ * The driver class for the hard portion of the assignment
+ */
 public class S1_Computus_Hard {
+
+    /**
+     * Main is a test method, which tests the Easter class's logic against a Hashtable of Easter dates from 1997 to 2017
+     * Source: https://en.wikipedia.org/wiki/List_of_dates_for_Easter -- Western dates
+     *
+     * @param args arguments
+     */
     @Test
     public static void main(String[] args) {
 
-        //https://en.wikipedia.org/wiki/List_of_dates_for_Easter -- Western dates
         Hashtable<Integer, String> dates = new Hashtable<>();
         dates.put(1997, "March 30, 1997");
         dates.put(1998, "April 12, 1998");
@@ -30,7 +39,6 @@ public class S1_Computus_Hard {
         dates.put(2016, "March 27, 2016");
         dates.put(2017, "April 16, 2017");
 
-        //test dates from 1997 to 2017
         for(int i = 1997; i < 2017; i++){
             Easter e = new Easter(i);
             String date = e.getDate();

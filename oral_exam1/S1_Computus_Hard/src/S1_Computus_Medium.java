@@ -1,7 +1,11 @@
-import java.util.Hashtable;
-import java.util.Set;
-
+/**
+ * The driver class for the medium portion of the assignment
+ */
 public class S1_Computus_Medium {
+    /**
+     * Generates the month and day of Easter for 5.7 million years, starting at year 0
+     * @param args arguments
+     */
     public static void main(String[] args) {
 
         int[] march = new int[10];

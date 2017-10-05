@@ -2,13 +2,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 
+/**
+ * Generates the key file
+ */
 public class KeyGenerator {
 
     /**
      * Uses PrinterWriter to generate a new file in the user specified file location. Generates a random number that
      * corresponds to the 'start point' of the encryption key and then generates n random values between 0 and n.
      *
-     * @param n            number of values to generate
+     * @param n number of values to generate
      * @param fileLocation the file location of the key file
      */
     public void generateKeyFile(int n, String fileLocation) {
