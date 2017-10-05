@@ -52,19 +52,12 @@ public class RomanToArabic {
     }
 
     /**
-     * Takes in a char that has been just typed by the user, checks if it's a "valid" Roman numeral by checking if it's
-     * in the hash table
+     * Checks four rules of Roman Numeral representations
+     * 1. The same letter cannot repeat more than 3 times
+     * 2. When subtracting, the smaller roman numeral must be a power of ten, i.e. not V or L
+     * 3. When subtracting, the same smaller roman numeral cannot repeat twice before the larger numeral, i.e. IIV
+     * 4. When subtracting, the smaller roman numeral cannot be more than 10 times smaller than the larger numeral, i.e. IC
      *
-     * @param c character to check
-     * @return boolean whether that char is in the hash table or not
-     */
-    public boolean checkRomanChar(char c) {
-        String str = Character.toString(c);
-        str = str.toUpperCase();
-        return dictionary.containsKey(str);
-    }
-
-    /**
      * @param str Roman numeral string
      * @return boolean that, if false, means the given Roman string failed a rule
      */
