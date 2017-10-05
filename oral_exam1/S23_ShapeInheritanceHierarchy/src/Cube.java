@@ -1,14 +1,31 @@
+import java.awt.*;
+
+/**
+ *
+ */
 public class Cube extends ThreeDimShape {
 
-    Cube() {
-    }
-
+    /**
+     *
+     * @param length
+     * @param width
+     * @param height
+     */
     Cube(double length, double width, double height) {
-        super(length, width, height);
+        this(length, width, height, Color.white);
+
     }
 
-    Cube(double length, double width, double height, String color) {
+    /**
+     *
+     * @param length
+     * @param width
+     * @param height
+     * @param color
+     */
+    Cube(double length, double width, double height, Color color) {
         super(length, width, height, color);
     }
+
 
 }

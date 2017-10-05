@@ -1,5 +1,5 @@
 // TipCalculator.java
-// Main application class that loads and displays the Tip Calculator's GUI.
+// ShapeInheritanceHierarchyTest application class that loads and displays the Tip Calculator's GUI.
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

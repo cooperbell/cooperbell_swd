@@ -17,13 +17,23 @@ public class Decrypt {
     private char convertChar(char c, int n) {
 
         int index = Encrypt.findIndex(c);
+        int k = index;
         if (index == -1)
             return c;
 
         int newChar = index - n;
         if (newChar < 0) {
-            int buffer = Math.abs(index - n);
-            newChar = buffer % Encrypt.alphabet.length;
+            newChar = Math.abs(newChar);
+            if(newChar > Encrypt.alphabet.length) {
+                newChar = newChar % Encrypt.alphabet.length;
+                newChar = Encrypt.alphabet.length - newChar;
+            }
+//            for(int i = 0; i < n; i++){
+//                if( k - i < 0){
+//                    k = Encrypt.alphabet.length-1;
+//                }
+//                newChar = Encrypt.alphabet[k-i];
+//            }
         }
         c = Encrypt.alphabet[newChar];
         return c;
