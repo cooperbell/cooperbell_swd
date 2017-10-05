@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/lab/20170828-Quiz/20170828-Quiz.iml" filepath="$PROJECT_DIR$/lab/20170828-Quiz/20170828-Quiz.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab/20170911_Quiz/20170911_Quiz.iml" filepath="$PROJECT_DIR$/lab/20170911_Quiz/20170911_Quiz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oral_exam1/ArabicToRomanGUI.iml" filepath="$PROJECT_DIR$/oral_exam1/ArabicToRomanGUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/oral_exam1/ColorChooser_Hard.iml" filepath="$PROJECT_DIR$/oral_exam1/ColorChooser_Hard.iml" />
       <module fileurl="file://$PROJECT_DIR$/class_demos/ch03/Fig03_12/Fig03_12.iml" filepath="$PROJECT_DIR$/class_demos/ch03/Fig03_12/Fig03_12.iml" />
       <module fileurl="file://$PROJECT_DIR$/class_demos/ch03/Fig03_13/Fig03_13.iml" filepath="$PROJECT_DIR$/class_demos/ch03/Fig03_13/Fig03_13.iml" />
@@ -55,6 +54,7 @@
       <module fileurl="file://$PROJECT_DIR$/class_demos/supplemental/HelloTemp/HelloTemp.iml" filepath="$PROJECT_DIR$/class_demos/supplemental/HelloTemp/HelloTemp.iml" />
       <module fileurl="file://$PROJECT_DIR$/class_demos/supplemental/HelloWorld/HelloWorld.iml" filepath="$PROJECT_DIR$/class_demos/supplemental/HelloWorld/HelloWorld.iml" />
       <module fileurl="file://$PROJECT_DIR$/lab/Myfig2-6/Myfig2-6.iml" filepath="$PROJECT_DIR$/lab/Myfig2-6/Myfig2-6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oral_exam1/S10_ArabicToRomanGUI_Hard.iml" filepath="$PROJECT_DIR$/oral_exam1/S10_ArabicToRomanGUI_Hard.iml" />
       <module fileurl="file://$PROJECT_DIR$/oral_exam1/S1_Computus_Hard/S1_Computus_Hard.iml" filepath="$PROJECT_DIR$/oral_exam1/S1_Computus_Hard/S1_Computus_Hard.iml" />
       <module fileurl="file://$PROJECT_DIR$/oral_exam1/S23_ShapeInheritanceHierarchy.iml" filepath="$PROJECT_DIR$/oral_exam1/S23_ShapeInheritanceHierarchy.iml" />
       <module fileurl="file://$PROJECT_DIR$/oral_exam1/S2_OneTimePad_Hard/S2_OneTimePad_Hard.iml" filepath="$PROJECT_DIR$/oral_exam1/S2_OneTimePad_Hard/S2_OneTimePad_Hard.iml" />

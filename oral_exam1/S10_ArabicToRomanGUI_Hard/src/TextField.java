@@ -67,11 +67,11 @@ public class TextField extends JFrame {
             String RomanNum = romanTextField.getText();
             RomanToArabic r = new RomanToArabic();
 
-            if (r.checkRomanChar(e.getKeyChar()) || e.getKeyCode() == 8) {
+            if (r.checkRomanValidity(RomanNum)) {
                 RomanNum = r.convertRomanToArabic(RomanNum);
                 arabicTextField.setText(RomanNum);
             } else {
-                throw new IllegalArgumentException("Illegal character");
+                throw new IllegalArgumentException("Illegal character or representation");
             }
         }
     }
