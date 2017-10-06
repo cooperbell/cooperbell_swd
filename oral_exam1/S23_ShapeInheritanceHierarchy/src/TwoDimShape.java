@@ -6,7 +6,7 @@ import java.awt.*;
 public class TwoDimShape extends Shape {
 
     /**
-     *
+     * Perimeter of two dimensional shape
      */
     private double perimeter;
 
@@ -42,8 +42,9 @@ public class TwoDimShape extends Shape {
     }
 
     /**
+     * Getter for perimeter variable
      *
-     * @return
+     * @return perimeter of two dimensional shape
      */
     public double getPerimeter(){
         return perimeter;

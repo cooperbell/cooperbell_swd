@@ -1,72 +1,49 @@
 import java.awt.*;
 
 /**
- *
+ * Class for sphere
  */
 public class Sphere extends ThreeDimShape {
 
     /**
-     *
+     * radius of sphere
      */
     private double radius;
 
-    /**
-     *
-     */
-    private double volume;
 
     /**
+     * Constructor initializes radius. Sets color to default white
      *
+     * @param radius radius of sphere
      */
-    private double surfaceArea;
-
-    /**
-     *
-     * @param radius
-     */
-    Sphere(double radius){
+    Sphere(double radius) {
         this(radius, Color.white);
     }
 
     /**
+     * Constructor initializes radius, color, surface area, and volume
      *
-     * @param radius
-     * @param color
+     * @param radius radius of sphere
+     * @param color color of sphere
      */
     Sphere(double radius, Color color) {
         super(color);
         this.radius = radius;
-        setVolume();
-        setSurfaceArea();
+        double surfaceArea = 4 * Math.PI * Math.pow(radius, 2);
+        double volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+        super.setSurfaceArea(surfaceArea);
+        super.setVolume(volume);
     }
 
-    /**
-     *
-     */
-    private void setVolume() {
-        volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+    public double getRadius() {
+        return radius;
     }
 
-    /**
-     *
-     * @return
-     */
-    public double getVolume() {
-        return volume;
+    public void setRadius(double radius) {
+        if(radius < 0){
+            throw new IllegalArgumentException("Radius cannot be less than 0");
+        }
+        this.radius = radius;
     }
 
-    /**
-     *
-     */
-    private void setSurfaceArea() {
-        surfaceArea = 4 * Math.PI * Math.pow(radius, 2);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public double getSurfaceArea(){
-        return surfaceArea;
-    }
 }

@@ -153,7 +153,7 @@ class Shape {
      *
      * @param x the x coordinate
      */
-    public void setxLocation(double x){
+    public void setXLocation(double x){
         this.xLocation = x;
     }
 
@@ -162,7 +162,7 @@ class Shape {
      *
      * @return the x coordinate
      */
-    public double getxLocation(){
+    public double getXLocation(){
         return xLocation;
     }
 
@@ -171,7 +171,7 @@ class Shape {
      *
      * @param y the y coordinate
      */
-    public void setyLocation(double y){
+    public void setYLocation(double y){
         this.yLocation = y;
     }
 
@@ -180,7 +180,7 @@ class Shape {
      *
      * @return the y coordinate
      */
-    public double getyLocation() {
+    public double getYLocation() {
         return yLocation;
     }
 }

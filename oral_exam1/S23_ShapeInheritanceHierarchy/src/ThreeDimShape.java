@@ -1,45 +1,51 @@
 import java.awt.*;
 
 /**
- *
+ * Class for three dimensional shapes. Directly inherits from Shape
  */
 public class ThreeDimShape extends Shape {
     /**
-     *
+     * height of three dimensional shape
      */
     private double height;
 
     /**
-     *
+     * volume of three dimensional shape
      */
     private double volume;
 
     /**
-     *
+     * surface area of three dimensional shape
      */
     private double surfaceArea;
 
     /**
-     * @param color
+     * Constructor initializes color. Sets length, width, and height to default 0
+     *
+     * @param color color of three dimensional shape
      */
     ThreeDimShape(Color color) {
         this(0, 0, 0, color);
     }
 
     /**
-     * @param length
-     * @param width
-     * @param height
+     * Constructor initializes length, width, and height
+     *
+     * @param length length of three dimensional shape
+     * @param width width of three dimensional shape
+     * @param height height of three dimensional shape
      */
     ThreeDimShape(double length, double width, double height) {
         this(length, width, height, Color.white);
     }
 
     /**
-     * @param length
-     * @param width
-     * @param height
-     * @param color
+     * Constructor initializes length, width, height, and color
+     *
+     * @param length length of three dimensional shape
+     * @param width width of three dimensional shape
+     * @param height height of three dimensional shape
+     * @param color color of three dimensional shape
      */
     ThreeDimShape(double length, double width, double height, Color color) {
         super(length, width, color);
@@ -51,18 +57,25 @@ public class ThreeDimShape extends Shape {
         setSurfaceArea(getArea());
     }
 
+    public void setVolume(double volume){
+        this.volume = volume;
+    }
     /**
-     * @return
+     * Getter for volume variable
+     *
+     * @return volume of three dimensional shape
      */
     public double getVolume() {
         return volume;
     }
 
     /**
-     * @param area
+     * Setter for surface area variable
+     *
+     * @param surfaceArea area of the three dimensional shape
      */
-    private void setSurfaceArea(double area) {
-        surfaceArea = area * 6;
+    public void setSurfaceArea(double surfaceArea) {
+        this.surfaceArea = surfaceArea;
     }
 
     /**

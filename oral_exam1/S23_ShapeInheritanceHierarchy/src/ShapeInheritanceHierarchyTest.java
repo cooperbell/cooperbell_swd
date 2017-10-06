@@ -23,8 +23,12 @@ public class ShapeInheritanceHierarchyTest {
         System.out.println("Perimeter of Rect: " + rect.getPerimeter());
 
         Circle circle = new Circle(6);
+        circle.setXLocation(5);
+        circle.setYLocation(5);
         System.out.println("Area of circle: " + circle.getArea());
         System.out.println("Circumference of circle: " + circle.getCircumference());
+        System.out.println("x Location of circle: " + circle.getXLocation());
+        System.out.println("y Location of circle: " + circle.getYLocation());
 
         ThreeDimShape cube = new ThreeDimShape(5,6,7);
         System.out.println("Volume of Three D cube:" + cube.getVolume());
