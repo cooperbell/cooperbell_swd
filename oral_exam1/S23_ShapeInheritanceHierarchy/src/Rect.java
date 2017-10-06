@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- *
+ * Class representing a 2D rectangle
  */
 public class Rect extends TwoDimShape {
     /**
