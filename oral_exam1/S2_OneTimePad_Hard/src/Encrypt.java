@@ -46,10 +46,10 @@ public class Encrypt {
         if (index == -1)
             return c;
 
-        int newChar = index + n;
-        if (newChar > alphabet.length)
-            newChar = newChar % alphabet.length;
-        c = alphabet[newChar];
+        int newIndex = index + n;
+        if (newIndex >= alphabet.length)
+            newIndex = newIndex % alphabet.length;
+        c = alphabet[newIndex];
         return c;
     }
 

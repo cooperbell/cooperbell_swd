@@ -6,6 +6,11 @@ import java.awt.*;
 public class TwoDimShape extends Shape {
 
     /**
+     *
+     */
+    private double perimeter;
+
+    /**
      * Constructor initializes color. Automatically sets length and width to 0
      *
      * @param color color of 2D shape
@@ -33,7 +38,14 @@ public class TwoDimShape extends Shape {
      */
     TwoDimShape(double length, double width, Color color){
         super(length, width, color);
+        perimeter = 2 * (length+width);
     }
 
-
+    /**
+     *
+     * @return
+     */
+    public double getPerimeter(){
+        return perimeter;
+    }
 }

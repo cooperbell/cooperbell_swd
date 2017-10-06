@@ -2,8 +2,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- *  Driver class for main. Prompts user for message to encrypt, number of keys, and path of key file to be put.
- *  Encrypts message into a new file that is given to user.
+ * Driver class for main. Prompts user for message to encrypt, number of keys, and path of key file to be put.
+ * Encrypts message into a new file that is given to user.
  */
 public class Main {
     /**
@@ -23,6 +23,7 @@ public class Main {
         System.out.println("Enter a message: ");
         message = scan.nextLine();
         message = message.toUpperCase();
+
 
         System.out.println("Give a location for the key file: ");
         keyFileLocation = scan.nextLine();
@@ -46,4 +47,5 @@ public class Main {
         decrypt.decryptMessage(keyFileLocation, messageFileLocation);
 
     }
+
 }

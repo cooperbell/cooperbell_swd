@@ -21,21 +21,37 @@ public class Decrypt {
         if (index == -1)
             return c;
 
-        int newChar = index - n;
-        if (newChar < 0) {
-            newChar = Math.abs(newChar);
-            if(newChar > Encrypt.alphabet.length) {
-                newChar = newChar % Encrypt.alphabet.length;
-                newChar = Encrypt.alphabet.length - newChar;
+        int newIndex = n - index;
+        if (newIndex < 0) {
+            newIndex = Math.abs(newIndex);
+            if (newIndex >= Encrypt.alphabet.length) {
+                newIndex = newIndex % Encrypt.alphabet.length;
+                newIndex = Encrypt.alphabet.length - newIndex;
+                if (newIndex == 0) {
+                    c = Encrypt.alphabet[newIndex];
+                } else {
+                    c = Encrypt.alphabet[newIndex];
+                }
+            } else {
+                c = Encrypt.alphabet[newIndex];
             }
-//            for(int i = 0; i < n; i++){
-//                if( k - i < 0){
-//                    k = Encrypt.alphabet.length-1;
-//                }
-//                newChar = Encrypt.alphabet[k-i];
-//            }
+        } else {
+            if (newIndex >= Encrypt.alphabet.length) {
+                newIndex = newIndex % Encrypt.alphabet.length;
+                newIndex = Encrypt.alphabet.length - newIndex;
+                if (newIndex == 26) {
+                    c = Encrypt.alphabet[0];
+                }else {
+                    c = Encrypt.alphabet[newIndex];
+                }
+            } else {
+                if (newIndex == 0) {
+                    c = Encrypt.alphabet[newIndex];
+                } else {
+                    c = Encrypt.alphabet[Encrypt.alphabet.length - newIndex];
+                }
+            }
         }
-        c = Encrypt.alphabet[newChar];
         return c;
     }
 
@@ -43,7 +59,7 @@ public class Decrypt {
      * Opens the key file and takes in the starting point. Opens the message file and stores the message into a char array.
      * Iterates simultaneously through the char array and key file to convert each char using ConvertChar() method.
      *
-     * @param keyFileLocation path of the key file
+     * @param keyFileLocation     path of the key file
      * @param messageFileLocation path of the message file
      * @throws FileNotFoundException exception thrown if file isn't found
      */
