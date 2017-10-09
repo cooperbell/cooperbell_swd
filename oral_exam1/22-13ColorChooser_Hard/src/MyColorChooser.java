@@ -53,7 +53,7 @@ public class MyColorChooser extends JFrame {
     private ColorPanel colorPanel;
 
     /**
-     * Constructor sets up layout, Jextfields, JSliders, handlers, and the color panel
+     * Constructor sets up layout, JTextfields, JSliders, handlers, and the color panel
      */
     MyColorChooser() {
         super("Color Chooser");
