@@ -192,7 +192,6 @@ public class MyColorChooser extends JFrame {
 
         /**
          * Specifies size of color panel
-         *
          * @return Dimension object
          */
         @Override

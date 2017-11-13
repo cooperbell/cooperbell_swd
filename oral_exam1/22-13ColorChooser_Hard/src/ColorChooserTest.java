@@ -17,5 +17,6 @@ public class ColorChooserTest {
         mcc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mcc.pack();
         mcc.setVisible(true);
+
     }
 }
