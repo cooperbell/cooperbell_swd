@@ -125,7 +125,7 @@ public class Client extends JFrame {
     private void sendData(String fileLocation) {
         try // send object to server
         {
-            output.writeObject("CLIENT>>> " + fileLocation);
+            output.writeObject(fileLocation);
             output.flush(); // flush data to output
             displayMessage("\nCLIENT>>> " + fileLocation);
         } catch (IOException ioException) {

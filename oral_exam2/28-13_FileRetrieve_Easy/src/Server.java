@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URISyntaxException;
 
 public class Server extends JFrame {
     private JTextField enterField; // inputs message from user
@@ -104,6 +105,8 @@ public class Server extends JFrame {
                 getFile(message);
             } catch (ClassNotFoundException classNotFoundException) {
                 displayMessage("\nUnknown object type received");
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
             }
 
         } while (!message.equals("CLIENT>>> TERMINATE"));
@@ -135,11 +138,12 @@ public class Server extends JFrame {
         }
     }
 
-    private void getFile(String fileLocation) {
+    private void getFile(String fileLocation) throws URISyntaxException {
         String line;
         BufferedReader fileReader;
+        File aaa = new File(getClass().getResource(fileLocation).toURI());
         try {
-            fileReader = new BufferedReader(new FileReader(fileLocation));
+            fileReader = new BufferedReader(new FileReader(aaa));
             while ((line = fileReader.readLine()) != null) {
                 sendData(line);
             }
