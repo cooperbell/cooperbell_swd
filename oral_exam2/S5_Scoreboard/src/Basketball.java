@@ -9,35 +9,35 @@ public class Basketball extends Game{
 
     private static final Map<String, Integer> scoreTypes;
 
-    static {
+    static { //TODO: probably better to do enumerated types
         scoreTypes = new HashMap<>();
-        scoreTypes.put("Three-Pointer", 3);
-        scoreTypes.put("Two-Pointer", 2);
-        scoreTypes.put("Foul Shot", 1);
+        scoreTypes.put("Three Pointer", 3);
+        scoreTypes.put("Two Pointer", 2);
+        scoreTypes.put("Free Throw", 1);
     }
 
     @Override
     public boolean isGameOver() {
-        return false;
+        return getCurrentPeriod() > getMaxPeriods();
     }
 
     @Override
     public void addScore(String scoreType, Team team) {
-
+        team.addScore(scoreTypes.get(scoreType));
     }
 
     @Override
     public String getNameOfPeriod() {
-        return null;
+        return "quarter";
     }
 
     @Override
     public int getMaxPeriods() {
-        return 0;
+        return 4;
     }
 
     @Override
     public int getLengthOfPeriod() {
-        return 0;
+        return 12;
     }
 }
