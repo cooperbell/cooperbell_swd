@@ -8,7 +8,15 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public void addScore(ScoringMethod scoringMethod, Team team){
+    public void addScore(int score){
+        points += score;
+    }
 
+    public int getScore(){
+        return points;
+    }
+
+    public String getTeamName() {
+        return teamName;
     }
 }

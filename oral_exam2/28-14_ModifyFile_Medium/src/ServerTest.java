@@ -2,21 +2,11 @@
 // Test the Server application.
 
 import javax.swing.*;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 public class ServerTest {
     public static void main(String[] args) {
-        //write the text file
-        try {
-            PrintWriter writer = new PrintWriter("C:\\Users\\Cooper\\IdeaProjects\\coopbell_swd\\oral_exam2\\28-14_ModifyFile_Medium\\src\\message.txt");
-            writer.println("The first line");
-            writer.println("The second line");
-            writer.close();
-        } catch (IOException e){
-            System.out.println("Cannot write file");
-        }
-        Server application = new Server("C:\\Users\\Cooper\\IdeaProjects\\coopbell_swd\\oral_exam2\\28-14_ModifyFile_Medium\\src\\message.txt"); // create server
+        Server application = new Server(); // create server
+        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         application.runServer(); // run server application
     }
 }

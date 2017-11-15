@@ -22,8 +22,7 @@ public class MergeSort {
 
         int[] left = Arrays.copyOfRange(array, 0, half);
         int[] right = Arrays.copyOfRange(array, half, array.length);
-//        mergeSort(left);
-//        mergeSort(right);
+
 
         array = sort(mergeSort(left), mergeSort(right));
 

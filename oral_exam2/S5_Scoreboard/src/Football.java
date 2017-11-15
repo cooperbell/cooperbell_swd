@@ -1,19 +1,41 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Football extends Game {
 
     public Football(Team team1, Team team2) {
         super(team1, team2);
     }
 
-    @Override
-    public ScoringMethod getScoringMethods(int index) {
-        int [] scoringMethods = new int[5];
-        scoringMethods[0] = 7; //touchdown
-        scoringMethods[1] = 3; //field goal
-        scoringMethods[2] = 1; //extra-point
-        scoringMethods[3] = 2; //two point conversion
-        scoringMethods[4] = 2; //safety
+    private static final Map<String, Integer> scoreTypes;
 
-        return scoringMethods[index];
+    static {
+        scoreTypes = new HashMap<>();
+        scoreTypes.put("touchdown", 7);
+        scoreTypes.put("field goal", 3);
+        scoreTypes.put("extra point", 1);
+        scoreTypes.put("two point conversion", 2);
+        scoreTypes.put("safety", 2);
+    }
+
+    @Override
+    public void addScore(String scoreType, Team team) {
+        team.addScore(scoreTypes.get(scoreType));
+    }
+
+    @Override
+    public String getNameofPeriod() {
+        return "quarter";
+    }
+
+    @Override
+    public boolean isGameOver() {
+        return getCurrentPeriod() > getMaxPeriods();
+    }
+
+    @Override
+    public int getMaxPeriods(){
+        return 4;
     }
 
 }
