@@ -56,8 +56,10 @@ public abstract class Game {
 
     public abstract void addScore(String scoreType, Team team);
 
-    public abstract String getNameofPeriod();
+    public abstract String getNameOfPeriod();
 
     public abstract int getMaxPeriods();
+
+    public abstract int getLengthOfPeriod();
 
 }

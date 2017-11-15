@@ -23,8 +23,9 @@ public class Football extends Game {
         team.addScore(scoreTypes.get(scoreType));
     }
 
+
     @Override
-    public String getNameofPeriod() {
+    public String getNameOfPeriod() {
         return "quarter";
     }
 
@@ -36,6 +37,11 @@ public class Football extends Game {
     @Override
     public int getMaxPeriods(){
         return 4;
+    }
+
+    @Override
+    public int getLengthOfPeriod(){
+        return 15;
     }
 
 }
