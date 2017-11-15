@@ -2,8 +2,15 @@ import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class Scoreboard_Driver {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -12,16 +19,18 @@ public class Scoreboard_Driver {
         String homeTeam, awayTeam;
 
         while (bool) {
-                System.out.println("Select type of game: ");
-                System.out.println("1. Football\n2. Basketball");
-                sportNumber = scanner.nextInt();
-                bool = false;
+            System.out.println("Select type of game: ");
+            System.out.println("1. Football\n2. Basketball\n3. Hockey");
+            sportNumber = scanner.nextInt();
+            bool = false;
+
 
             //TODO: do some error checking. mismatch and within bounds
 
         }
 
         System.out.println("Enter team1 name: ");
+        scanner.nextLine();
         homeTeam = scanner.nextLine();
         Team team1 = new Team(homeTeam);
 
@@ -33,11 +42,11 @@ public class Scoreboard_Driver {
         System.out.println(team2.getTeamName() + " - " + team2.getScore());
 
 
-        switch (sportNumber){
+        switch (sportNumber) {
             case 1:
                 Game football = new Football(team1, team2);
-                System.out.println("Current Period: " + football.getCurrentPeriod());
                 while (!football.isGameOver()) {
+                    System.out.println("Current " + football.getNameOfPeriod() + ": " + football.getCurrentPeriod());
                     System.out.println("Menu:");
                     System.out.println("1. " + team1.getTeamName() + " touchdown");
                     System.out.println("2. " + team1.getTeamName() + " field goal");
@@ -51,49 +60,60 @@ public class Scoreboard_Driver {
                     System.out.println("9. " + team2.getTeamName() + " two point conversion");
                     System.out.println("10. " + team2.getTeamName() + " safety");
 
-                    System.out.println("11. End quarter");
-
-                    //TODO: do some error checking. mismatch and within bounds
+                    System.out.println("11. End " + football.getNameOfPeriod());
 
                     choice = scanner.nextInt();
 
                     switch (choice) {
                         case 1:
                             football.addScore("touchdown", team1);
+                            break;
                         case 2:
                             football.addScore("field goal", team1);
+                            break;
                         case 3:
                             football.addScore("extra point", team1);
+                            break;
                         case 4:
                             football.addScore("two point conversion", team1);
+                            break;
                         case 5:
                             football.addScore("safety", team1);
+                            break;
                         case 6:
                             football.addScore("touchdown", team2);
+                            break;
                         case 7:
                             football.addScore("field goal", team2);
+                            break;
                         case 8:
                             football.addScore("extra point", team2);
+                            break;
                         case 9:
                             football.addScore("two point conversion", team2);
+                            break;
                         case 10:
                             football.addScore("safety", team2);
+                            break;
                         case 11:
                             football.endCurrentPeriod();
+                            break;
+                        default:
+                            System.out.println("Not a valid answer");
                     }
 
                     //print out score, check if game is over
                     System.out.println(team1.getTeamName() + " - " + team1.getScore());
                     System.out.println(team2.getTeamName() + " - " + team2.getScore());
 
-                    //TODO: do i check if game is over or does endCurrentPeriod just do it?
                 }
-
+                System.out.println("Game Over");
+                System.out.println(football.getWinningTeam().getTeamName() + " won");
+                break;
             case 2:
                 Game basketball = new Basketball(team1, team2);
-                System.out.println("Current Period: " + basketball.getCurrentPeriod());
-
-                while(!basketball.isGameOver()){
+                while (!basketball.isGameOver()) {
+                    System.out.println("Current " + basketball.getNameOfPeriod() + ": " + basketball.getCurrentPeriod());
                     System.out.println("Menu:");
                     System.out.println("1. " + team1.getTeamName() + " Three Pointer");
                     System.out.println("2. " + team1.getTeamName() + " Two Pointer");
@@ -103,121 +123,73 @@ public class Scoreboard_Driver {
                     System.out.println("5. " + team2.getTeamName() + " Two Pointer");
                     System.out.println("6. " + team2.getTeamName() + " Free Throw");
 
-                    System.out.println("11. End quarter");
-
-                    //TODO: some error checking
+                    System.out.println("7. End " + basketball.getNameOfPeriod());
 
                     choice = scanner.nextInt();
 
-                    switch (choice){
+                    switch (choice) {
                         case 1:
                             basketball.addScore("Three Pointer", team1);
+                            break;
                         case 2:
                             basketball.addScore("Two Pointer", team1);
+                            break;
                         case 3:
                             basketball.addScore("Free Throw", team1);
+                            break;
                         case 4:
                             basketball.addScore("Three Pointer", team2);
+                            break;
                         case 5:
                             basketball.addScore("Two Pointer", team2);
+                            break;
                         case 6:
                             basketball.addScore("Free Throw", team2);
+                            break;
                         case 7:
                             basketball.endCurrentPeriod();
-
+                            break;
+                        default:
+                            System.out.println("Not a valid answer");
                     }
 
                     System.out.println(team1.getTeamName() + " - " + team1.getScore());
                     System.out.println(team2.getTeamName() + " - " + team2.getScore());
                 }
+                System.out.println("Game Over");
+                System.out.println(basketball.getWinningTeam().getTeamName() + " won");
+                break;
+            case 3:
+                Game hockey = new Hockey(team1, team2);
+                while (!hockey.isGameOver()) {
+                    System.out.println("Current " + hockey.getNameOfPeriod() + ": " + hockey.getCurrentPeriod());
+                    System.out.println("Menu:");
+                    System.out.println("1. " + team1.getTeamName() + " Goal");
+                    System.out.println("2. " + team2.getTeamName() + " Goal");
 
+                    System.out.println("3. End " + hockey.getNameOfPeriod());
+
+                    choice = scanner.nextInt();
+
+                    switch (choice) {
+                        case 1:
+                            hockey.addScore("goal", team1);
+                            break;
+                        case 2:
+                            hockey.addScore("goal", team2);
+                            break;
+                        case 3:
+                            hockey.endCurrentPeriod();
+                            break;
+                        default:
+                            System.out.println("Not a valid answer");
+                    }
+
+                    System.out.println(team1.getTeamName() + " - " + team1.getScore());
+                    System.out.println(team2.getTeamName() + " - " + team2.getScore());
+                }
+                System.out.println("Game Over");
+                System.out.println(hockey.getWinningTeam().getTeamName() + " won");
         }
-
-        System.out.println("Game Over");
-
-
-//        System.out.println("Creating new Football game");
-//
-//        /*----- setup teams and game ------*/
-//        Team hawkeyes = new Team("Hawkeyes");
-//        Team cyclones = new Team("Cyclones");
-//
-//        System.out.println(hawkeyes.getTeamName() + " vs " + cyclones.getTeamName());
-//        /*----- start game ------*/
-//
-//        Game hyveeCyHawk = new Football(hawkeyes, cyclones);
-//        System.out.println("Name of Period: " + hyveeCyHawk.getNameOfPeriod());
-//
-//        /*----- do some scoring and print the score along with what period we are at ------*/
-//
-//        System.out.println("Current " + hyveeCyHawk.getNameOfPeriod() + ": " + hyveeCyHawk.getCurrentPeriod());
-//
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("safety", hawkeyes);
-//        hyveeCyHawk.addScore("field goal", cyclones);
-//
-//        System.out.println("Ending first quarter");
-//        hyveeCyHawk.endCurrentPeriod();
-//
-//        System.out.println("Hawkeyes score:" + hawkeyes.getScore());
-//        System.out.println("Cyclones score:" + cyclones.getScore());
-//
-//        /*----- end current period, print new period and do some more scoring ------*/
-//
-//        System.out.println("Current " + hyveeCyHawk.getNameOfPeriod() + ": " + hyveeCyHawk.getCurrentPeriod());
-//
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("safety", hawkeyes);
-//        hyveeCyHawk.addScore("field goal", cyclones);
-//
-//        System.out.println("Is this game over? " + hyveeCyHawk.isGameOver());
-//
-//        System.out.println("Ending second quarter");
-//        hyveeCyHawk.endCurrentPeriod();
-//
-//        System.out.println("Hawkeyes score:" + hawkeyes.getScore());
-//        System.out.println("Cyclones score:" + cyclones.getScore());
-//
-//        /*----- 3rd quarter and scoring------*/
-//
-//        System.out.println("Current " + hyveeCyHawk.getNameOfPeriod() + ": " + hyveeCyHawk.getCurrentPeriod());
-//
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//        hyveeCyHawk.addScore("touchdown", hawkeyes);
-//
-//        System.out.println("Ending third quarter");
-//        hyveeCyHawk.endCurrentPeriod();
-//
-//        System.out.println("Hawkeyes score:" + hawkeyes.getScore());
-//        System.out.println("Cyclones score:" + cyclones.getScore());
-//
-//        /*----- fourth quarter and scoring ------*/
-//
-//        System.out.println("Current " + hyveeCyHawk.getNameOfPeriod() + ": " + hyveeCyHawk.getCurrentPeriod());
-//
-//        hyveeCyHawk.addScore("safety", hawkeyes);
-//
-//        System.out.println("Ending fourth quarter");
-//        hyveeCyHawk.endCurrentPeriod();
-//
-//        System.out.println("Hawkeyes score:" + hawkeyes.getScore());
-//        System.out.println("Cyclones score:" + cyclones.getScore());
-//
-//        /*----- end the game ------*/
-//
-//        System.out.println("Is the game over? " + hyveeCyHawk.isGameOver());
-//
-//
-//        /*
-//
-//
-//        do one with soccer and like tennis or something
-//         */
-
-
     }
 }

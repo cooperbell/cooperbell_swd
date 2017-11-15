@@ -1,14 +1,17 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Football extends Game {
+/**
+ * Created by coopbell on 11/14/17.
+ */
+public class Hockey extends Game {
 
     /**
      *
      * @param team1
      * @param team2
      */
-    public Football(Team team1, Team team2) {
+    public Hockey(Team team1, Team team2) {
         super(team1, team2);
     }
 
@@ -19,11 +22,8 @@ public class Football extends Game {
 
     static {
         scoreTypes = new HashMap<>();
-        scoreTypes.put("touchdown", 7);
-        scoreTypes.put("field goal", 3);
-        scoreTypes.put("extra point", 1);
-        scoreTypes.put("two point conversion", 2);
-        scoreTypes.put("safety", 2);
+        scoreTypes.put("goal", 1);
+
     }
 
     /**
@@ -42,7 +42,7 @@ public class Football extends Game {
      */
     @Override
     public String getNameOfPeriod() {
-        return "quarter";
+        return "Period";
     }
 
     /**
@@ -51,7 +51,7 @@ public class Football extends Game {
      */
     @Override
     public int getMaxPeriods() {
-        return 4;
+        return 3;
     }
 
     /**
@@ -60,7 +60,6 @@ public class Football extends Game {
      */
     @Override
     public int getLengthOfPeriod() {
-        return 15;
+        return 20;
     }
-
 }
