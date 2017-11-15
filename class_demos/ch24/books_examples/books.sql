@@ -1,9 +1,9 @@
-DROP TABLE authorISBN;
-DROP TABLE titles;
-DROP TABLE authors;
+DROP TABLE IF EXISTS authorISBN;
+DROP TABLE IF EXISTS titles;
+DROP TABLE IF EXISTS authors;
 
 CREATE TABLE authors (
-   authorID INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+   authorID INT NOT NULL AUTO_INCREMENT,
    firstName varchar (20) NOT NULL,
    lastName varchar (30) NOT NULL,
    PRIMARY KEY (authorID)
