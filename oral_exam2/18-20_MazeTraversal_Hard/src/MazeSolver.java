@@ -4,34 +4,38 @@
 public class MazeSolver {
 
     /**
-     *
+     * the 2D array maze
      */
     private final char[][] maze;
 
     /**
-     *
+     * the starting point row index
      */
-    private int entranceRow;
+    private int entranceRowIndex;
 
     /**
-     *
+     * the starting point column index
      */
-    private int entranceCol;
+    private int entranceColIndex;
 
     /**
-     * @param maze
-     * @param entranceRow
-     * @param entranceCol
+     * Constrcutor for MazeSolver class
+     * @param maze maze array
+     * @param entranceRowIndex starting row index
+     * @param entranceColIndex starting col index
      */
-    public MazeSolver(char[][] maze, int entranceRow, int entranceCol) {
+    public MazeSolver(char[][] maze, int entranceRowIndex, int entranceColIndex) {
         this.maze = maze;
-        this.entranceRow = entranceRow;
-        this.entranceCol = entranceCol;
+        this.entranceRowIndex = entranceRowIndex;
+        this.entranceColIndex = entranceColIndex;
     }
 
     /**
-     * @param row
-     * @param col
+     *  Looks to see if there's a dot around it's current position. If there is, recurse into that position and repeat
+     *  until either a "dead end" or the exit is found. If a dead end is found, back track until the algorithm can find
+     *  another route to pursue.
+     * @param row current row index
+     * @param col current column index
      */
     public void mazeTraversal(int row, int col) {
         maze[row][col] = 'x';
@@ -41,16 +45,16 @@ public class MazeSolver {
                 System.out.println("");
                 printMaze();
                 mazeTraversal(row - 1, col);
-            } else if (maze[row + 1][col] == '.') { // look down
-                maze[row + 1][col] = 'x';
-                System.out.println("");
-                printMaze();
-                mazeTraversal(row + 1, col);
             } else if (maze[row][col + 1] == '.') { // look right
                 maze[row][col + 1] = 'x';
                 System.out.println("");
                 printMaze();
                 mazeTraversal(row, col + 1);
+            } else if (maze[row + 1][col] == '.') { // look down
+                maze[row + 1][col] = 'x';
+                System.out.println("");
+                printMaze();
+                mazeTraversal(row + 1, col);
             } else if (maze[row][col - 1] == '.') { // look left
                 maze[row][col - 1] = 'x';
                 System.out.println("");
@@ -68,14 +72,21 @@ public class MazeSolver {
                     mazeTraversal(row, col - 1);
                 }
             }
+        } else if (ifEntranceFound(row, col)) {
+            System.out.println("No path found");
         } else {
             System.out.println("Exit found");
         }
     }
 
     private boolean ifExitFound(int row, int col) {
-        if (((row != entranceRow) && (col != entranceCol)) && ((col == 0 || col == 11) || (row == 0 || row == 11)))
+        if (((row != entranceRowIndex) && (col != entranceColIndex)) && ((col == 0 || col == 11) || (row == 0 || row == 11)))
             return true;
+        return false;
+    }
+
+    private boolean ifEntranceFound(int row, int col) {
+        if ((row == entranceRowIndex) && (col == entranceColIndex)) return true;
         return false;
     }
 
