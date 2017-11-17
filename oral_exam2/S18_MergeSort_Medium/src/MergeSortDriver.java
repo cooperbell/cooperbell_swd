@@ -1,13 +1,13 @@
 import java.util.Random;
 
 /**
- *
+ * Driver class for MergeSort class
  */
 public class MergeSortDriver {
 
     /**
-     *
-     * @param args
+     * Generates 100-element unsorted array between 0 and 1000, then passes that to the mergeSort method to sort
+     * @param args command line arguments
      */
     public static void main(String[] args) {
 
