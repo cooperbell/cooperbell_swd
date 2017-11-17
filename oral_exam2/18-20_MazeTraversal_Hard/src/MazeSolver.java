@@ -80,14 +80,11 @@ public class MazeSolver {
     }
 
     private boolean ifExitFound(int row, int col) {
-        if (((row != entranceRowIndex) && (col != entranceColIndex)) && ((col == 0 || col == 11) || (row == 0 || row == 11)))
-            return true;
-        return false;
+        return ((row != entranceRowIndex) && (col != entranceColIndex)) && ((col == 0 || col == 11) || (row == 0 || row == 11));
     }
 
     private boolean ifEntranceFound(int row, int col) {
-        if ((row == entranceRowIndex) && (col == entranceColIndex)) return true;
-        return false;
+        return (row == entranceRowIndex) && (col == entranceColIndex);
     }
 
     public void printMaze() {

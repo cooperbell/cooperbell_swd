@@ -2,12 +2,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Class for the check writing algorithm
  */
 public class CheckWriter {
 
     /**
-     *
+     * Hash map holds all the English equivalents of decimal numbers
      */
     private static final Map<Integer, String> numbers;
 
@@ -15,7 +15,7 @@ public class CheckWriter {
         numbers = new HashMap<>();
         numbers.put(1, "one");
         numbers.put(2, "two");
-        numbers.put(3, "three"); //TODO: i might not need all of these
+        numbers.put(3, "three");
         numbers.put(4, "four");
         numbers.put(5, "five");
         numbers.put(6, "six");
@@ -45,11 +45,44 @@ public class CheckWriter {
 
     /**
      * parses int and writes the corresponding number in English format
-     * @param checkAmount
-     * @return
+     *
+     * @param checkAmount amount of check as double
+     * @return the string version of check amount
      */
-    public String writeNumber(int checkAmount){
-        Integer num = checkAmount;
-        return "NOT DONE YET";
+    public String writeNumber(double checkAmount) {
+        String[] arr = String.valueOf(checkAmount).split("\\.");
+        StringBuilder beforeDecimal = new StringBuilder();
+        int[] intArr = new int[2];
+        int num = Integer.parseInt(arr[0]);
+        int decimal = Integer.parseInt(arr[1]);
+
+        if((num / 100) >= 1){
+            int Buffer = Math.floorDiv(num, 100);
+            num = num - Buffer*100;
+            beforeDecimal.append(numbers.get(Buffer));
+            beforeDecimal.append(" ");
+            beforeDecimal.append(numbers.get(100));
+        }
+
+        if(((num / 10) >= 1) && num >= 20){
+            int Buffer = Math.floorDiv(num, 10);
+            num = num - Buffer*10;
+            beforeDecimal.append(" ");
+            beforeDecimal.append(numbers.get(Buffer * 10));
+        }
+
+        if(num > 10 && num < 20){
+            num = num - 10;
+            beforeDecimal.append(" ");
+            beforeDecimal.append(numbers.get(10 + num));
+            num = 0;
+        }
+
+        if (num > 0 && num < 10) {
+            beforeDecimal.append(" ");
+            beforeDecimal.append(numbers.get(num));
+        }
+
+        return beforeDecimal + " and " + decimal + "/100";
     }
 }
