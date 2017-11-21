@@ -1,5 +1,5 @@
 /**
- *
+ * class MazeSolver
  */
 public class MazeSolver {
 
@@ -20,7 +20,8 @@ public class MazeSolver {
 
     /**
      * Constrcutor for MazeSolver class
-     * @param maze maze array
+     *
+     * @param maze             maze array
      * @param entranceRowIndex starting row index
      * @param entranceColIndex starting col index
      */
@@ -31,9 +32,10 @@ public class MazeSolver {
     }
 
     /**
-     *  Looks to see if there's a dot around it's current position. If there is, recurse into that position and repeat
-     *  until either a "dead end" or the exit is found. If a dead end is found, back track until the algorithm can find
-     *  another route to pursue.
+     * Looks to see if there's a dot around it's current position. If there is, recurse into that position and repeat
+     * until either a "dead end" or the exit is found. If a dead end is found, back track until the algorithm can find
+     * another route to pursue.
+     *
      * @param row current row index
      * @param col current column index
      */
@@ -72,21 +74,23 @@ public class MazeSolver {
                     mazeTraversal(row, col - 1);
                 }
             }
-        } else if (ifEntranceFound(row, col)) {
-            System.out.println("No path found");
         } else {
             System.out.println("Exit found");
         }
     }
 
+    /**
+     * @param row
+     * @param col
+     * @return
+     */
     private boolean ifExitFound(int row, int col) {
         return ((row != entranceRowIndex) && (col != entranceColIndex)) && ((col == 0 || col == 11) || (row == 0 || row == 11));
     }
 
-    private boolean ifEntranceFound(int row, int col) {
-        return (row == entranceRowIndex) && (col == entranceColIndex);
-    }
-
+    /**
+     * Prints the 2D array
+     */
     public void printMaze() {
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {

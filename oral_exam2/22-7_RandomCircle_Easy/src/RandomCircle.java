@@ -2,18 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
+ * Class for the GUI
  */
 public class RandomCircle extends JFrame {
 
     /**
-     *
+     * radius of the circle
      */
     private int radius;
 
     /**
-     *
-     * @param radius
+     * Constructor sets up the GUI
+     * @param radius integer of the radius
      */
     public RandomCircle(int radius){
         super("Random Circle Generator");
@@ -94,7 +94,7 @@ public class RandomCircle extends JFrame {
 
 
     /**
-     *
+     * Draws the circle using paintComponent and repaint()
      */
     private class drawCircle extends JPanel {
         @Override
@@ -106,32 +106,32 @@ public class RandomCircle extends JFrame {
     }
 
     /**
-     *
-     * @return
+     * getter for the radius instance variable
+     * @return the radius of the circle
      */
     public int getRadius(){
         return radius;
     }
 
     /**
-     *
-     * @return
+     * gets the diameter of the circle
+     * @return the diameter
      */
     public int getDiameter(){
         return getRadius() * 2;
     }
 
     /**
-     *
-     * @return
+     * gets the area of the circle
+     * @return the area
      */
     public double getArea(){
         return Math.pow(getRadius(), 2) * Math.PI;
     }
 
     /**
-     *
-     * @return
+     * gets the circumference of the circle
+     * @return the circumference
      */
     public double getCircumference(){
         return 2 * Math.PI * getRadius();

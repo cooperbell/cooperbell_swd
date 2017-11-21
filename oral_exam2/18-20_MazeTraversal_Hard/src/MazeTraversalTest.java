@@ -3,6 +3,7 @@
  * Driver class for the maze traversal algorithm
  */
 public class MazeTraversalTest {
+
     /**
      * The 2D array maze
      */
