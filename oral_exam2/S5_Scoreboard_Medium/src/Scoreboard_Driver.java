@@ -3,29 +3,35 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
+ * Driver class
  */
 public class Scoreboard_Driver {
 
     /**
+     * Main method simulates the scoreboard
      *
-     * @param args
+     * @param args command arguments
      */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         int sportNumber = 0, choice;
-        boolean bool = true;
         String homeTeam, awayTeam;
 
-        while (bool) {
-            System.out.println("Select type of game: ");
-            System.out.println("1. Football\n2. Basketball\n3. Hockey");
-            sportNumber = scanner.nextInt();
-            bool = false;
-
-
-            //TODO: do some error checking. mismatch and within bounds
+        while (true) {
+            try {
+                System.out.println("Select type of game: ");
+                System.out.println("1. Football\n2. Basketball\n3. Hockey");
+                sportNumber = scanner.nextInt();
+                if (sportNumber < 1 || sportNumber > 3) {
+                    System.out.println("Must be an integer 1 - 3");
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Must be an integer 1 - 3");
+                scanner.next();
+            }
 
         }
 

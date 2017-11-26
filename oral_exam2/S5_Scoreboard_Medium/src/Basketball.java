@@ -2,63 +2,51 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Class for a basketball game. Inherits from class Game
  */
-public class Basketball extends Game{
+public class Basketball extends Game {
 
     /**
+     * Constructor calls the super's constructor
      *
-     * @param team1
-     * @param team2
+     * @param team1 First team object
+     * @param team2 Second team object
      */
     public Basketball(Team team1, Team team2) {
         super(team1, team2);
     }
 
     /**
-     *
+     * Hash map for storing scoring types and its corresponding points
      */
     private static final Map<String, Integer> scoreTypes;
 
-    static { //TODO: probably better to do enumerated types
+    static {
         scoreTypes = new HashMap<>();
         scoreTypes.put("Three Pointer", 3);
         scoreTypes.put("Two Pointer", 2);
         scoreTypes.put("Free Throw", 1);
     }
 
-    /**
-     *
-     * @param scoreType
-     * @param team
-     */
     @Override
     public void addScore(String scoreType, Team team) {
-        team.addScore(scoreTypes.get(scoreType));
+        if (scoreTypes.containsKey(scoreType)) {
+            team.addScore(scoreTypes.get(scoreType));
+        } else {
+            System.out.printf("Score type does not exist");
+        }
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String getNameOfPeriod() {
         return "quarter";
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int getMaxPeriods() {
         return 4;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int getLengthOfPeriod() {
         return 12;
