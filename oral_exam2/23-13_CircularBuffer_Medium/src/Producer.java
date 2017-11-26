@@ -1,24 +1,21 @@
 /**
- *
+ * Producer class writes to Buffer
  */
 public class Producer implements Runnable {
 
     /**
-     *
+     * Circular buffer object that is shared between Producer and Consumer objects
      */
     private final CircularBuffer sharedLocation;
 
     /**
-     *
-     * @param sharedLocation
+     * Constructor initializes sharedLocation object
+     * @param sharedLocation CircularBuffer object
      */
     public Producer(CircularBuffer sharedLocation) {
         this.sharedLocation = sharedLocation;
     }
 
-    /**
-     *
-     */
     @Override
     public void run() {
         int sum = 0;

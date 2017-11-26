@@ -12,22 +12,57 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
+/**
+ * Class for the client
+ */
 public class Client extends JFrame {
-    private JTextField enterField; // enters information from user
-    private JTextArea displayArea; // display information to user
-    private ObjectOutputStream output; // output stream to server
-    private ObjectInputStream input; // input stream from server
-    private String message = ""; // message from server
-    private String chatServer; // host server for this application
-    private Socket client; // socket to communicate with server
 
-    // initialize chatServer and set up GUI
+    /**
+     * enters file path from user
+     */
+    private JTextField enterField;
+
+    /**
+     * display information to user
+     */
+    private JTextArea displayArea;
+
+    /**
+     * output stream to server
+     */
+    private ObjectOutputStream output;
+
+    /**
+     * input stream from server
+     */
+    private ObjectInputStream input;
+
+    /**
+     * message from server
+     */
+    private String message = "";
+
+    /**
+     * host server for this application
+     */
+    private String chatServer;
+
+    /**
+     * socket to communicate with server
+     */
+    private Socket client;
+
+    /**
+     * initialize chatServer and set up GUI
+     *
+     * @param host
+     */
     public Client(String host) {
         super("Client");
 
-        chatServer = host; // set server to which this client connects
+        chatServer = host;
 
-        enterField = new JTextField(); // create enterField
+        enterField = new JTextField();
         enterField.setEditable(false);
         enterField.addActionListener(
                 new ActionListener() {
@@ -41,65 +76,71 @@ public class Client extends JFrame {
 
         add(enterField, BorderLayout.NORTH);
 
-        displayArea = new JTextArea(); // create displayArea
+        displayArea = new JTextArea();
         add(new JScrollPane(displayArea), BorderLayout.CENTER);
 
-        setSize(300, 150); // set size of window
-        setVisible(true); // show window
+        setSize(300, 150);
+        setVisible(true);
     }
 
-    // connect to server and process messages from server
+    /**
+     * connect to server and process messages from server
+     */
     public void runClient() {
-        try // connect to server, get streams, process connection
-        {
-            connectToServer(); // create a Socket to make connection
-            getStreams(); // get the input and output streams
-            processConnection(); // process connection
+        try {
+            connectToServer();
+            getStreams();
+            processConnection();
             displayMessage("Send a file path.");
         } catch (EOFException eofException) {
             displayMessage("\nClient terminated connection");
         } catch (IOException ioException) {
             ioException.printStackTrace();
         } finally {
-            closeConnection(); // close connection
+            closeConnection();
         }
     }
 
-    // connect to server
+    /**
+     * connect to server
+     *
+     * @throws IOException if InetAddress cannot find address
+     */
     private void connectToServer() throws IOException {
         displayMessage("Attempting connection\n");
 
-        // create Socket to make connection to server
         client = new Socket(InetAddress.getByName(chatServer), 12345);
 
-        // display connection information
         displayMessage("Connected to: " +
                 client.getInetAddress().getHostName());
     }
 
-    // get streams to send and receive data
+    /**
+     * get streams to send and receive data
+     *
+     * @throws IOException if streams are not found
+     */
     private void getStreams() throws IOException {
-        // set up output stream for objects
         output = new ObjectOutputStream(client.getOutputStream());
-        output.flush(); // flush output buffer to send header information
+        output.flush();
 
-        // set up input stream for objects
         input = new ObjectInputStream(client.getInputStream());
 
         displayMessage("\nGot I/O streams\n");
     }
 
-    // process connection with server
+    /**
+     * process connection with server
+     *
+     * @throws IOException if input cannot read object
+     */
     private void processConnection() throws IOException {
-        // enable enterField so client user can send messages
         setTextFieldEditable(true);
 
-        do // process messages sent from server
-        {
-            try // read message and display it
-            {
-                message = (String) input.readObject(); // read new message
-                displayMessage("\n" + message); // display message
+        do {
+            try {
+                message = (String) input.readObject();
+                displayMessage("\n" + message);
             } catch (ClassNotFoundException classNotFoundException) {
                 displayMessage("\nUnknown object type received");
             }
@@ -107,33 +148,42 @@ public class Client extends JFrame {
         } while (!message.equals("SERVER>>> TERMINATE"));
     }
 
-    // close streams and socket
+    /**
+     * close streams and socket
+     */
     private void closeConnection() {
         displayMessage("\nClosing connection");
-        setTextFieldEditable(false); // disable enterField
+        setTextFieldEditable(false);
 
         try {
-            output.close(); // close output stream
-            input.close(); // close input stream
-            client.close(); // close socket
+            output.close();
+            input.close();
+            client.close();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
     }
 
-    // send message to server
+    /**
+     * send message to server
+     *
+     * @param fileLocation the file path
+     */
     private void sendData(String fileLocation) {
-        try // send object to server
-        {
+        try {
             output.writeObject(fileLocation);
-            output.flush(); // flush data to output
+            output.flush();
             displayMessage("\nCLIENT>>> " + fileLocation);
         } catch (IOException ioException) {
             displayArea.append("\nError writing object");
         }
     }
 
-    // manipulates displayArea in the event-dispatch thread
+    /**
+     * manipulates displayArea in the event-dispatch thread
+     *
+     * @param messageToDisplay String to append to displayArea
+     */
     private void displayMessage(final String messageToDisplay) {
         SwingUtilities.invokeLater(
                 new Runnable() {
@@ -145,7 +195,11 @@ public class Client extends JFrame {
         );
     }
 
-    // manipulates enterField in the event-dispatch thread
+    /**
+     * manipulates enterField in the event-dispatch thread
+     *
+     * @param editable boolean whether the displayArea should be editable
+     */
     private void setTextFieldEditable(final boolean editable) {
         SwingUtilities.invokeLater(
                 new Runnable() {
@@ -157,18 +211,3 @@ public class Client extends JFrame {
         );
     }
 }
-
-/**************************************************************************
- * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *
- * Pearson Education, Inc. All Rights Reserved.                           *
- *                                                                        *
- * DISCLAIMER: The authors and publisher of this book have used their     *
- * best efforts in preparing the book. These efforts include the          *
- * development, research, and testing of the theories and programs        *
- * to determine their effectiveness. The authors and publisher make       *
- * no warranty of any kind, expressed or implied, with regard to these    *
- * programs or to the documentation contained in these books. The authors *
- * and publisher shall not be liable in any event for incidental or       *
- * consequential damages in connection with, or arising out of, the       *
- * furnishing, performance, or use of these programs.                     *
- *************************************************************************/

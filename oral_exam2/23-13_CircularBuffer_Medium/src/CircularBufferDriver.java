@@ -3,7 +3,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
+ * Driver class
  */
 public class CircularBufferDriver {
     public static void main(String[] args) throws InterruptedException{

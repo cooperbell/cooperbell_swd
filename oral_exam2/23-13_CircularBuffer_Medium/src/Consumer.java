@@ -1,24 +1,21 @@
 /**
- *
+ * Consumer class reads from Buffer
  */
 public class Consumer implements Runnable {
 
     /**
-     *
+     * Circular buffer object that is shared between Producer and Consumer objects
      */
     private final CircularBuffer sharedLocation;
 
     /**
-     *
-     * @param sharedLocation
+     * Constructor initializes sharedLocation object
+     * @param sharedLocation CircularBuffer object
      */
     public Consumer(CircularBuffer sharedLocation) {
         this.sharedLocation = sharedLocation;
     }
 
-    /**
-     *
-     */
     @Override
     public void run() {
         int sum = 0;

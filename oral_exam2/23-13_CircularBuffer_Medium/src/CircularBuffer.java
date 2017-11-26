@@ -3,50 +3,45 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- *
+ * Class CircularBuffer implements from Buffer
  */
 public class CircularBuffer implements Buffer {
 
     /**
-     *
+     * Buffer to hold cycling values
      */
     private final int[] buffer = {-1, -1, -1};
 
     /**
-     *
+     * number of occupied cells in the Buffer
      */
     private int occupiedCells = 0;
 
     /**
-     *
+     * Index in Buffer to write in
      */
     private int writeIndex = 0;
 
     /**
-     *
+     * Index in buffer to read from
      */
     private int readIndex = 0;
 
     /**
-     *
+     * Locks and unlocks for current thread
      */
     private final Lock accessLock = new ReentrantLock();
 
     /**
-     *
+     * Controls whether the thread can write to the Buffer or not
      */
     private final Condition canWrite = accessLock.newCondition();
 
     /**
-     *
+     * Controls whether the thread can read from the Buffer or not
      */
     private final Condition canRead = accessLock.newCondition();
 
-    /**
-     *
-     * @param value
-     * @throws InterruptedException
-     */
     @Override
     public void blockingPut(int value) throws InterruptedException {
 
@@ -68,11 +63,6 @@ public class CircularBuffer implements Buffer {
         }
     }
 
-    /**
-     *
-     * @return
-     * @throws InterruptedException
-     */
     @Override
     public int blockingGet() throws InterruptedException {
 
@@ -100,10 +90,10 @@ public class CircularBuffer implements Buffer {
     }
 
     /**
+     * display current operation and buffer state
      *
      * @param operation
      */
-    // display current operation and buffer state
     public void displayState(String operation) {
 
         try {
