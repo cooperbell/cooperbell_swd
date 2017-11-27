@@ -78,7 +78,7 @@ public class CheckWriter {
             num = 0;
         }
 
-        if (num > 0 && num < 10) {
+        if (num > 0 && num <= 10) {
             beforeDecimal.append(" ");
             beforeDecimal.append(numbers.get(num));
         }
